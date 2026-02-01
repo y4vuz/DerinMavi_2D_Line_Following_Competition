@@ -212,7 +212,7 @@ def run_dev_mode(debug=False):
             current_steering = steering
 
             # 3. Update Physics
-            # car.update(steering, target_speed)
+            car.update(steering, target_speed)
 
             # 4. Check Environment
             cx, cy = int(car.x), int(car.y)
