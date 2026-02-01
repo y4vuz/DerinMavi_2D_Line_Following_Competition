@@ -31,7 +31,7 @@ CAMERA_OFFSET = 30
 CAMERA_FOV_SIZE = (64, 64)
 
 # Car Start Position
-start_x, start_y = 120, 300
+start_x, start_y = 60, 550
 start_angle = -math.pi / 2
 
 

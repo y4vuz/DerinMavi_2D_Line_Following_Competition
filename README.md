@@ -1,5 +1,5 @@
 # Derin Mavi Line Follower Challenge
-
+## Seviye 3
 Derin Mavi Robotik Takımı'nın çizgi izleme yarışmasına hoş geldiniz! Bu yarışmada 2D simülasyon ortamında çizgi izleyen bir robot algoritması geliştireceksiniz.
 
 ## Yarışma Kuralları
@@ -37,4 +37,3 @@ pip install pygame numpy opencv-python
 ## Leaderboard
 | User | Time | Date |
 |---|---|---|
-| MahmutEsadErman | 6.3667s | 2026-02-01 13:54 |
