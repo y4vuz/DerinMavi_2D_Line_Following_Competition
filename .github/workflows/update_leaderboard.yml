@@ -15,8 +15,12 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout main repo
+      - name: Checkout triggering branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+          repository: ${{ github.event.workflow_run.head_repository.full_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Artifacts
         uses: actions/download-artifact@v4
@@ -49,5 +53,5 @@ jobs:
             echo "No changes to leaderboard"
           else
             git commit -m "Update Leaderboard: ${{ steps.read.outputs.user }} - ${{ steps.read.outputs.score }}s"
-            git push
+            git push origin HEAD:${{ github.event.workflow_run.head_branch }}
           fi
