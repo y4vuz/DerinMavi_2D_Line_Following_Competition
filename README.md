@@ -35,5 +35,6 @@ pip install pygame numpy opencv-python
 
 
 ## Leaderboard
-| User | Time | Date |
-|---|---|---|
+| Rank | User | Time | Date |
+|---|---|---|---|
+| 🥇 1 | fatihemrekara | 2.1667s | 2026-02-08 11:40 |
