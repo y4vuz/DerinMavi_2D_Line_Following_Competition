@@ -29,7 +29,14 @@ jobs:
           SCORE=$(cat artifacts/score.txt)
           USER=$(cat artifacts/user.txt)
           PR_URL=$(cat artifacts/pr_url.txt)
-          BRANCH=$(cat artifacts/branch.txt)
+          
+          if [ -f artifacts/branch.txt ]; then
+            BRANCH=$(cat artifacts/branch.txt)
+          else
+            echo "Warning: artifacts/branch.txt not found. This might be an old workflow run."
+            BRANCH="main"
+          fi
+          
           echo "score=$SCORE" >> $GITHUB_OUTPUT
           echo "user=$USER" >> $GITHUB_OUTPUT
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
