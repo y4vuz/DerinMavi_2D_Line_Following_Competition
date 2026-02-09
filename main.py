@@ -227,7 +227,7 @@ def run_test_mode():
                 pixel = cv_track[cy, cx]
                 b, g, r = pixel
 
-                if g > 200 and r < 50 and b < 50:
+                if g > 200 and r < 90 and b < 90:
                     finished = True
                     time_taken = frames * DT
                     print(f"FINAL_SCORE: {time_taken:.4f}")
@@ -312,7 +312,7 @@ def run_dev_mode(debug=False):
                 pixel = cv_track[cy, cx]
                 b, g, r = pixel
 
-                if g > 200 and r < 50 and b < 50:
+                if g > 200 and r < 90 and b < 90:
                     finish_time = time.time() - start_time
                     print(f"FINISHED! Time: {finish_time:.2f}s")
                     finished = True
