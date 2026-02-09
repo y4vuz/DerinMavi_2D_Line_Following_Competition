@@ -10,7 +10,7 @@ import math
 
 # Configuration
 WINDOW_WIDTH = 800
-WINDOW_HEIGHT = 600
+WINDOW_HEIGHT = 750
 FPS = 60
 TRACK_FILE = 'track.png'
 CAR_FILE = 'racing_car.png'
@@ -41,7 +41,7 @@ CAMERA_OFFSET = 30
 CAMERA_FOV_SIZE = (64, 64)
 
 # Car Start Position
-start_x, start_y = 60, 550
+start_x, start_y = 50, 660
 start_angle = -math.pi / 2
 
 
@@ -197,7 +197,7 @@ def run_test_mode():
             sys.exit(1)
 
         solution = load_solution()
-        car = Car(100, 300, -math.pi / 2)
+        car = Car(start_x, start_y, start_angle)
 
         frames = 0
         finished = False
@@ -221,17 +221,23 @@ def run_test_mode():
             # Update
             car.update(steering, target_speed)
 
-            # Check Finish / Bounds
+            # Check Finish / Bounds / Obstacle
             cx, cy = int(car.x), int(car.y)
             if 0 <= cx < WINDOW_WIDTH and 0 <= cy < WINDOW_HEIGHT:
                 pixel = cv_track[cy, cx]
                 b, g, r = pixel
 
+                # Yeşil bitiş noktası
                 if g > 200 and r < 50 and b < 50:
                     finished = True
                     time_taken = frames * DT
                     print(f"FINAL_SCORE: {time_taken:.4f}")
                     sys.exit(0)
+                
+                # Kırmızı engele çarpma kontrolü
+                if r > 200 and g < 50 and b < 50:
+                    print("FAIL: Hit red obstacle")
+                    sys.exit(1)
             else:
                 print("FAIL: Out of bounds")
                 sys.exit(1)
@@ -277,6 +283,7 @@ def run_dev_mode(debug=False):
     solution = load_solution()
 
     start_time = time.time()
+    finish_time = None  # Bitiş zamanını kaydetmek için
     running = True
     finished = False
     current_steering = 0.0
@@ -311,9 +318,16 @@ def run_dev_mode(debug=False):
                 pixel = cv_track[cy, cx]
                 b, g, r = pixel
 
+                # Yeşil bitiş noktası
                 if g > 200 and r < 50 and b < 50:
-                    print(f"FINISHED! Time: {time.time() - start_time:.2f}s")
+                    finish_time = time.time() - start_time  # Süreyi dondur
+                    print(f"FINISHED! Time: {finish_time:.2f}s")
                     finished = True
+                
+                # Kırmızı engele çarpma kontrolü
+                if r > 200 and g < 50 and b < 50:
+                    print("HIT OBSTACLE! Game Over!")
+                    running = False
             else:
                 print("Out of bounds!")
                 running = False
@@ -324,11 +338,12 @@ def run_dev_mode(debug=False):
 
         # UI
         font = pygame.font.SysFont(None, 36)
-        elapsed = time.time() - start_time
-        if finished:
-            msg = f"Finished! Time: {elapsed:.2f}s"
+        if finished and finish_time is not None:
+            # Süre donduruldu, finish_time'ı göster
+            msg = f"Finished! Time: {finish_time:.2f}s"
             color = (0, 255, 0)
         else:
+            elapsed = time.time() - start_time
             msg = f"Time: {elapsed:.2f}s"
             color = (0, 0, 0)
 

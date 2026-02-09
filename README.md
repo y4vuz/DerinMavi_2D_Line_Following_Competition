@@ -1,6 +1,6 @@
 # Derin Mavi Line Follower Challenge
-## Seviye 4 - Daha Gerçekçi Fizik
-Derin Mavi Robotik Takımı'nın çizgi izleme yarışmasına hoş geldiniz! Bu yarışmada 2D simülasyon ortamında çizgi izleyen bir robot algoritması geliştireceksiniz. Bu seviyede robotun fiziksel özellikleri daha gerçekçi hale getirilmiştir. Artık robotun hızı ve direksiyon açısı birbirinden bağımsızdır. Ayrıca robotun kayma özelliği eklenmiştir. Robotun kayma özelliği, robotun hızına ve direksiyon açısına göre değişir.
+## Seviye 5 - Engelden Kaçınma
+Derin Mavi Robotik Takımı'nın çizgi izleme yarışmasına hoş geldiniz! Bu yarışmada 2D simülasyon ortamında çizgi izleyen bir robot algoritması geliştireceksiniz. Bu seviyede robotun önüne kırmızı engeller çıkacak ve robot bu engellerden kaçarak çizgi izlemeye devam edecek.
 
 ## Yarışma Kuralları
 
