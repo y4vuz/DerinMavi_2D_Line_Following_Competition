@@ -106,7 +106,7 @@ def run_test_mode():
             sys.exit(1)
 
         solution = load_solution()
-        car = Car(100, 300, -math.pi / 2)
+        car = Car(start_x, start_y, start_angle, car_image)
 
         frames = 0
         finished = False
