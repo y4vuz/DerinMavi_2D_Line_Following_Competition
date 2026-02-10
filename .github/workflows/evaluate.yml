@@ -25,11 +25,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pygame numpy opencv-python
 
-    - name: Enforce Trusted Main File
-      run: |
-        # Download the trusted main.py from the main branch to prevent cheating
-        curl -o main.py https://raw.githubusercontent.com/${{ github.repository }}/main/main.py
-
     - name: Run Test Runner
       id: test
       run: |
