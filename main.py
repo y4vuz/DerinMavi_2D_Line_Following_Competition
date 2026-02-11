@@ -9,7 +9,7 @@ import time
 import math
 
 # Configuration
-WINDOW_WIDTH = 800
+WINDOW_WIDTH = 870
 WINDOW_HEIGHT = 750
 FPS = 60
 TRACK_FILE = 'track.png'
